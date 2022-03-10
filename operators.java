@@ -1,4 +1,4 @@
-public class operators
+public class Operators
 {
 
    
@@ -8,7 +8,7 @@ public class operators
     1. Arrithmatic operators
     2. Bitwise operators
     3. Logical Operator 
-    4. 
+    4. Ternary operator
 
     */
 
@@ -23,18 +23,66 @@ public class operators
 
 
 
-        // 1. Arrithmatic Operator 
-
+        // 1. Arrithmatic Operator  example
+ 
         // +, -, *, /, %  
 
+
+        /*
         int a =5;
         int b = 1;
-
+        
+        the below operations are based on arrithmatic operator
+        
         System.out.println(a+b); 
         System.out.println(a-b);
         System.out.println(a*b);
         System.out.println(a/b);
         System.out.println(a%b); 
+        
+        */
+
+
+
+
+
+
+        //  2. BitWise Operator  Example
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //  3. Logical operator  Example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 4.Ternary Operator Example 
     
 
     }

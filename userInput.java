@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class userInput {
+public class UserInput {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         
         //Talking input from the user
         Scanner scan1 = new Scanner(System.in);

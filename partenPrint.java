@@ -1,8 +1,10 @@
-public class partenPrint {
+public class PartenPrint 
+    {
 
 
 
-    public static void main(String[] args) {
+        public static void main(String[] args) 
+        {
 
         
 
@@ -17,7 +19,7 @@ public class partenPrint {
         * * * *
         * * * *
         
-        \*/
+        */
         
         
         /*
@@ -27,7 +29,7 @@ public class partenPrint {
         
         for(int i = 0; i <=3; i++)
         {
-            System.out.print("* ");
+           System.out.print("* ");
         }
         System.out.println();
         
@@ -35,23 +37,11 @@ public class partenPrint {
         */
         
 
-
-        for (int i = 1; i <= 6; i++) {
-            
-
-            
-
-
-
-
-
-
-        }
       
 
 
 
-   }
-
+ 
+    }
 }
 

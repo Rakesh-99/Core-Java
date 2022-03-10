@@ -2,7 +2,7 @@
 // Check if the given number even or odd
 import java.util.Scanner;
 
-public class ifElse {
+public class IfElse {
 
     public static void main(String[] args) {
 
