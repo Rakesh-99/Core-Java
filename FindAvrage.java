@@ -9,13 +9,13 @@ class Computer
         sum = a + b + c;
         System.out.println(sum);
 
-    }
+    };
 
     public void avg()
     {
         int avg = sum / 3;
         System.out.println(avg);
-    }
+    };
 }
 public class FindAvrage
 {
@@ -26,5 +26,5 @@ public class FindAvrage
         obj1.calculate(10, 20, 5);
         obj1.avg();
 
-    }
-}
+    };
+};
