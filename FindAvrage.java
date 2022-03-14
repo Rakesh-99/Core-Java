@@ -1,4 +1,4 @@
-// Find the Sum of three given numbers 
+// print the Sum of three given numbers and find the average of sum.
 
 
 class Computer
