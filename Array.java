@@ -53,18 +53,25 @@ public class Array {
         // Jagged arrays are also known as ragged arrays. They are the arrays containing
         // arrays of different length.
 
-        int jgdArr[][] = {
-                { 1, 3, 5, 6, 1, 2, 9 },
-                { 2, 1, 7, 4, 8, 2, 1 },
-                { 1, 1, 9 },
-                { 9, 1, 2, 3 },
-                { 10, 21, 9, 13, 19, 20, 21, 1, 6, 9 }
-        };
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < jgdArr[i].length; i++) {
-                System.out.println(jgdArr[i][j]);
-            }
+        
+        	int jgdArr [][] = 
+			{
+					{1,2,39,11,20},
+					{9,2,5,6,1},
+					{1,2},
+					{9,5,3,7}
+			};
+		
+		
+		for(int i = 0; i < arr.length; i++)
+		{
+			for(int j = 0; j < jgdArr[i].length; j++)
+			{
+				System.out.print(" " + jgdArr[i][j]);
+			}
+			System.out.println();
+		
         }
-
     }
+
 }
