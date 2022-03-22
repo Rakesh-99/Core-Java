@@ -1,0 +1,6 @@
+so what is ambiguity error in java ?
+
+So java basically doesn't support Multiple Inheritance because of the ambiguity error. why ?  lets see practically
+
+
+assume that you have two class A and B, and in both class there is a method called "run". So when you crete object of b and call it, 
