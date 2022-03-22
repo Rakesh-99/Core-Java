@@ -1,6 +1,6 @@
-// What is Method overLoading ?
+// How we can achive Method Overloading ?
 
-// The same name methods with diffrent Parameters and diffrent data types is called method Overloading 
+// We can achive Method overloading by Declaring Two or more method with Same name with diffrent parameters or diffrent data types or diffrent sequence in one class .
 
 
 // ex- 
