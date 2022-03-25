@@ -27,7 +27,7 @@ class Teachers
         System.out.println("Teachers teach!!!");
     }
 }
-class Students 
+class Students extends Teachers
 {
     public void eat ()
     {
@@ -43,7 +43,8 @@ public class DynamicMethodDispatch
 {
     public static void main(String[] args)
     {
-        Students obj = new Students();
+       
+        Teachers obj = new Students();
         obj.eat();
 
     }
