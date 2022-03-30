@@ -20,6 +20,17 @@
 
 
 
+
+
+        // When we should go for top level class and when we should go for Anonymous inner class   
+
+    /*
+        - If it is permanent or several times required we have to go for top level class and if it is required for one time or temporary we should go for anonymous inner class .
+
+    */
+
+
+
         // example : - 
 
         
