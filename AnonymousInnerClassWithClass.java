@@ -31,7 +31,7 @@
 
 
 
-        // example : - 
+        // example : - Anonymous inner class with by using concrete class
 
         
 class Students
@@ -41,7 +41,7 @@ class Students
         System.out.println("Outer class 'show' method !!");
     }
 }
-public class AnonymousInnerClass
+public class AnonymousInnerClassWithClass
 {
     public static void main(String[] args)
     {
