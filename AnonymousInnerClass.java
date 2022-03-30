@@ -42,8 +42,12 @@ public class AnonymousInnerClass
                 System.out.println(" Ex. of Anonyous inner class !!");
             }
         };
-
         obj.show();
+
+
+        Students obj2 = new Students();  // This is how we can call the parent class method by creating new object of it 
+        obj2.show();
+        
       
     }
 }
