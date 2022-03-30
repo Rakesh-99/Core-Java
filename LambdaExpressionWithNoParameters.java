@@ -96,7 +96,7 @@ Java lambda expression is treated as a function, so compiler does not create .cl
 
 
 
-
+// Lambda Expression with no parameter
 
 
 
