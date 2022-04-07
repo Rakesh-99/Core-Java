@@ -1,0 +1,15 @@
+what is Exception ? 
+
+- The unexpected or unwanted event which disturbes our normal flow of programs is called exception.
+
+
+What is the purpose of Exception Handling ? 
+
+- The purpose of Exception Handling is the Graceful termination of the programs.
+
+
+what is Exception Handling ?
+
+-   Exception handling is a mechanism to handle runtime errors, so that normal flow of the program can be maintained.
+
+
