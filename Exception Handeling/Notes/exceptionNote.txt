@@ -1,4 +1,5 @@
-what is Exception ? 
+what is Exception ?
+---------------------------------------------- 
 
 - The unexpected or unwanted event which disturbes our normal flow of programs is called exception.
 
@@ -9,7 +10,34 @@ What is the purpose of Exception Handling ?
 
 
 what is Exception Handling ?
+----------------------------------------------
 
 -   Exception handling is a mechanism to handle runtime errors, so that normal flow of the program can be maintained.
 
+or
 
+Defining the altranative way to conttinue the rest if the program normaly is called exception handling.
+
+
+
+
+What is Checked Exception ? 
+-------------------------------------
+
+- The execution which are checked by the compiler for smooth execution of programs wheather programmer handling or not, compiler will check it comopulsery, such type of exception called checked exception .
+
+
+
+What us Unchecked Exception ? 
+-------------------------------
+
+The exception which is not checked by the compiler wheather programmer is handling or not such type of exception is called Unchecked Exception .
+
+
+What is the meaning of RunTime Stack mechanism ?
+------------------------------------------------------
+
+- For every Thread JVM will create separate stack , every method call performed by the Thread, one entry will be stored in the 
+corresponding stack.
+
+- Once that method execution is completed , the corresponding entry will be removed. After completing all method calls now the Thread JVM will terminate the corresponding stack, this mechanism is known as corresponding statck mechanism. Each entry in the stack is called activation or stack frame.
