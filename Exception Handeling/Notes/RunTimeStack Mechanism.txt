@@ -1,0 +1,6 @@
+What is the meaning of RunTime Stack mechanism ?
+
+- For every Thread JVM will create separate stack , every method call performed by the Thread, one entry will be stored in the 
+corresponding stack.
+
+- Once that method execution is completed , the corresponding entry will be removed. After completing all method calls now the Thread JVM will terminate the corresponding stack, this mechanism is known as corresponding statck mechanism. Each entry in the stack is called activation or stack frame.
