@@ -73,7 +73,7 @@ The private access modifier is accessible only within the class.
 
 Simple example of private access modifier
 
-In this example, we have created two classes A and Simple. A class contains private data member and private method. We are accessing these private members from outside the class, so there is a compile-time error.
+In this example, we have created two classes "A" and "Simple". A class contains private data member and private method. We are accessing these private members from outside the class, so there is a compile-time error.
 
 
 
@@ -152,7 +152,7 @@ public class Simple
 
 Example of default access modifier
 
-In this example, we have created two packages pack and mypack. We are accessing the A class from outside its package, since A class is not public, so it cannot be accessed from outside the package.
+In this example, we have created two packages pack and mypack. We are accessing the "A" class from outside its package, since "A" class is not public, so it cannot be accessed from outside the package.
 
 
 //save by A.java  
@@ -162,7 +162,12 @@ package pack;
 
 class A
 {  
-  void msg(){System.out.println("Hello");}  
+  void msg()
+  {
+
+  System.out.println("Hello");
+
+  }  
 }  
 
 //save by B.java  
@@ -203,7 +208,7 @@ It provides more accessibility than the default modifer.
 Example of protected access modifier
 
 
-In this example, we have created the two packages pack and mypack. The A class of pack package is public, so can be accessed from outside the package. But msg method of this package is declared as protected, so it can be accessed from outside the class only through inheritance.
+In this example, we have created the two packages pack and mypack. The "A" class of pack package is public, so can be accessed from outside the package. But msg method of this package is declared as protected, so it can be accessed from outside the class only through inheritance.
 
 
 
@@ -268,7 +273,10 @@ package pack;
 
 public class A
 {  
-public void msg(){System.out.println("Hello");}  
+public void msg()
+    {
+    System.out.println("Hello");
+    }  
 } 
 
 
@@ -282,12 +290,13 @@ import pack.*;
   
 class B 
 {  
-   public static void main(String args[]){  
+   public static void main(String args[])
+    {  
    A obj = new A();  
    obj.msg();  
 
 
-  }  
+    }  
 }  
 Output:Hello
 

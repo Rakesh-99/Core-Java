@@ -1,7 +1,7 @@
 what is Exception ?
 ---------------------------------------------- 
 
-- The unexpected or unwanted event which disturbes our normal flow of programs is called exception.
+- The unexpected or unwanted event which disturbes our normal flow of our programs is called exception.
 
 
 What is the purpose of Exception Handling ? 
@@ -16,7 +16,7 @@ what is Exception Handling ?
 
 or
 
-Defining the altranative way to conttinue the rest if the program normaly is called exception handling.
+Defining the altranative way to continue the rest if the program normaly is called exception handling.
 
 
 
@@ -28,7 +28,7 @@ What is Checked Exception ?
 
 
 
-What us Unchecked Exception ? 
+What is Unchecked Exception ? 
 -------------------------------
 
 The exception which is not checked by the compiler wheather programmer is handling or not such type of exception is called Unchecked Exception .

@@ -1,4 +1,4 @@
-//what is this KeyWord and Waht is the use of it ?
+//what is this KeyWord and What is the use of it ?
 
 
 /*

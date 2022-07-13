@@ -1,4 +1,4 @@
-// So what is super keyWord and why do i use it ? 
+// So what is super keyWord and why do we use it ? 
 
 
 /*
@@ -31,7 +31,8 @@ class A {
 class B extends A
 {
     public B()
-    {     
+    {    
+        
         System.out.println("In B");
     }
     public B(int k)
@@ -44,6 +45,6 @@ public class SuperKeyWord
 {
     public static void main(String[] args)
     {
-        B obj = new B(1);    
+        B obj = new B(2);    
     }
 }

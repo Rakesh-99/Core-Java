@@ -1,27 +1,8 @@
-import java.io.FileInputStream;
-import java.io.FileInputStream;
-
-public class Exception
+public class Exception 
 {
-    public static void main(String[] args)
+    public static void main(String[] args)throws Exception
     {
-        
-
-        //Example of checked/ Compile time excetion 
-
-        
-        try
-        {
-
-        FileInputStream obj = new FileInputStream("d/abc.txt");
-
-        }
-        catch(Exception  e)
-        {
-
-        }
-
-        
-        
+        int i = 9 / 0;
+        System.out.println(i);
     }
 }

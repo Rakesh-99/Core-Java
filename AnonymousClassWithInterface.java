@@ -48,7 +48,7 @@ public class AnonymousClassWithInterface
         {
             public void run()
             {
-                System.out.println("This computer Os is running on windows 11 !");
+                System.out.println("This computer's Os is running on windows 11 !");
             }
         };
 

@@ -1,0 +1,313 @@
+What is Multitasking ?
+------------------------
+
+ Executing multiple tasks simultaniously is called multitasking.
+
+ There are two types of multitasking :
+ --------------------------------------
+
+ 1. Process Based Multitasking 
+ 2. Thread Based Multitasking 
+
+                1. Process Based Multitasking :
+                ------------------------------- 
+
+- Executing several tasks simultaniously where each task is a separated indepedent part, this is called as Process based multitasking.
+- Process based multitasking suitable at os level only.
+
+                2. Thread Based Multitasking :
+                ------------------------------
+
+- Executing several task simultaniously where each task is a separated indepedent part of the Same Program is called as Thread Based
+multitasking.
+- Thread based multitasking only suitable at programatic level.
+
+
+
+Main advantages of Multitasking :
+----------------------------------
+
+- The main advantages of multitasking is to reduce the response time of the system and perfomance by default will be improved.
+
+
+What is Thread ?
+--------------------
+
+- The separate flow of Execution is called Thread.
+- For every Thread there is some job is there.
+
+
+
+How we can define a Thread ? 
+-----------------------------
+
+There is two ways of defining a Thread : 
+----------------------------------------
+
+1. By extending a Thread class
+2. By Implementing Runnable Interface 
+
+
+
+
+
+1. Defining a Thread By extending a Thread class
+-------------------------------------------------
+
+class MyThread extends Thread 
+{
+    public void run()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("Child Thread !");
+        }
+    }
+}
+public class DefiningThread1
+{
+    public static void main(String[] args)
+    {
+        MyThread obj = new MyThread();
+        obj.start();
+        
+
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("Main Thread !");
+        }
+    }
+}
+
+
+
+
+What is Thread Scheduler ?
+---------------------------
+
+It is the part of Jvm. Thread Scheduler decides which Thread will get a chance to execute and when. We can not expect the executing
+order of Thread Scheduler because it is varried from JVM to JVM and we can not tell the exact algorithm followed by the Thread Scheduler.
+
+
+Diffrence between start(); and run(); method : 
+-----------------------------------------------
+
+- To start a new Thread we are required to call start(); method, which is responsible to invoke run(); method. 
+Without the start(); method a new Thread can not be created.
+
+- In the case of run(); method, no new Thread will be created and run(); method will be executed just like normal method.
+
+
+Importance of start(); method : 
+--------------------------------
+
+- start(); method is responsible for registering a new Thread with Thread Scheduler and all other activities, hence without executing 
+start(); method there is no chance of starting a new Thread in Java. 
+
+- Due to this start(); method is considerd as the heart of MultiThreading .
+
+
+Overloading of a run(); method ;
+---------------------------------
+
+Overloading of run(); method is possible however start(); method can only be used with no-arg run(); method and run(int i); method with 
+argument, we have to call it manually and it will be executed just as normal method executes .
+
+
+
+What if we not overriding run(); method ? 
+------------------------------------------
+
+if we are not overriding run(); method then Thread class run(); method will be executed, which has empty implementation, hence we will not
+get any output. It is highly recommended to override run(); method otherwise don't go for Multithreading concept.
+
+
+Overriding of the start(); method :
+------------------------------------
+
+If we Override start(); method then our start(); method will be executed just as like normal method and new Thread won't be created,
+so it is highly recommended to not override start(); method otherwise don't go for MultiThreading concept.
+
+
+super.start(); method : 
+--------------------------
+
+
+
+
+
+
+
+
+
+2.   Defining Thread by Implementing Runnable Interface : 
+-----------------------------------------------------
+
+class MyRunnable implements Runnable
+{
+    public void run()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("Executing by Child Thread !");
+        }
+    }
+}
+public class DefiningThread2
+{
+    public static void main(String[] args)
+    {
+        MyRunnable mr = new MyRunnable();
+        Thread t = new Thread(mr);
+        t.start();
+
+        for(int i = 0; i < 5; i++)
+        {
+            System.out.println("Executing by Main Thread !");
+        }
+    }
+}
+
+    
+
+
+
+                            Case Study on Runnable Interface 
+                            --------------------------------
+
+
+
+
+
+MyRunnable obj = new MyRunnable();
+Thread t1 = new MyThread();
+Thread t2 = new MyThread(obj);
+
+
+case-1: t1.start();
+-------------------
+In the case of t1.start(); , A new Thread will be created which is responsible of execution of Thread class run(); method, which is the empty 
+implementation.
+
+
+
+case-2: t1.run();
+-----------------
+In the case of t1.run(); the method t1.run(); will be executed just like a normal method and new Thread won't be created.
+
+
+
+case-3: t2.start();
+-------------------
+
+A new Thread will be created, which is the responsible for executing the MyRunnable class run(); method.
+
+
+
+
+case-4: t2.run();
+-----------------
+
+In this case MyRunnable class run(); method will be executed just like normal method and new Thread will not be created.
+
+
+
+case-5: obj.start();
+--------------------
+
+in this case we will get a RunTimeException saying "can not find symbol start(); in MyRunnable class. 
+
+
+
+case-6 obj.run();
+-----------------
+
+In this case MyRunnable run(); method will be executed just like a normal method and new Thread will not be created.
+
+
+
+
+
+
+Which approach is recommended to define a Thread ? By extending Thread class or Implementing Runnable Interface ?
+-------------------------------------------------------------------------------------------------------------------
+- Among two ways of defining a Thread Implementing Runnable Interface is recommended.
+- In the first approach we are always extending class and there is no chance of extending other class hence we are missing inheritance benifits.
+- However in the second approach while implementaing Runnable Interface we can extend any other class hence we will not miss any inheritance
+  benifits.
+- because of above reason Defining a Thread by Implementing Runnable Interface is always recommended over extending Thread class.
+
+
+
+
+
+
+Getting & Setting the name of a Thread :
+---------------------------------------
+
+to get a name of a Thread :
+--------------------------- 
+
+System.out.println(Thread.currentThread().getName());\
+
+
+to Set a name of a Thread : 
+---------------------------
+System.out.println(Thread.currentThread().setName());
+
+
+Thread Priorities : 
+-------------------
+
+- Every Thread in Java has some Priorities. It may be default priority generated by JVM or custumized priority provided by JVM.
+- The valid range of Thread priority is from 1 to 10 where 1 is min priority,5 is normal priority and 10 is max priority.
+
+
+Thread class defines the following constant to represented some standard priority : 
+-----------------------------------------------------------------------------------
+
+Thread.MIN_PRIORITY  - 1
+Thread.NORM_PRIORITY - 5
+Thread.MAX_PRIORITY  - 10
+
+
+- Thread Scheduler will use this Priorities while allocating processor. The Thread which has Max priority will get a chance to execute first.
+- If two Threads having same priority then we can not expect the exact execution order. It depends on Thread Scheduler.
+
+
+
+
+
+
+Default Priority : 
+------------------
+The default priority only for main Thread is 5 , However for all remaining Threads the default priority will be inherited from Parent to Child 
+, Whatever priority the parent Thread has the same priority will be inherited to Child Thread.
+
+
+
+
+
+
+
+
+
+Prevent Thread execution : 
+---------------------------
+There are three types of method which we can use to prevent the Thread from executing for temporary time .. 
+
+1. yeild(); method 
+2. join(); method 
+3. sleep(); method
+
+
+
+1. yeild();
+------------
+- yeild method causes to pause current executing Thread to give the chance to waiting Threads with same priority. If there is no waiting or 
+all waiting Threads have low priority then same Thread can continue its execution.
+
+- If multiple Threads are waiting with same Priorities then which waiting Thread will get a chance we can not expect it depends on Thread
+Scheduler.
+
+- The Thread which is yeild();, when it will get chance again it depends on Thread Scheduler and we can not expect exact order of executing.
