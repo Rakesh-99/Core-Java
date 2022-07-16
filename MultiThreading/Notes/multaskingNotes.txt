@@ -311,3 +311,485 @@ all waiting Threads have low priority then same Thread can continue its executio
 Scheduler.
 
 - The Thread which is yeild();, when it will get chance again it depends on Thread Scheduler and we can not expect exact order of executing.
+
+
+
+
+yeild(); method example :
+-------------------------
+
+
+class MyRunnable implements Runnable
+{
+    public void run()
+    {
+        for(int i = 0; i < 10; i ++)
+        {
+            System.out.println("Child Thread !");
+        }
+        Thread.yield();
+        ---------------
+    }
+}
+
+public class DemoYeildMethod
+{
+    public static void main(String[] args) 
+    {
+        MyRunnable obj = new MyRunnable();
+        Thread t = new Thread(obj);
+        t.start();
+        
+
+
+        for(int i = 0 ; i < 10; i ++)
+        {
+            System.out.println("Main Thread !");
+        }
+
+    }
+}
+
+- If we write yeild(); method then child Thread will always call yeild(); method to give the chance to main method, so main method will get 
+the chance more no. of times and the chance of completing main method is high.
+
+- Some platforms wont provide proper support for yeilf(); method .
+
+- if we comment Thread.yeild(); line then we can not expect the which Thread will gate chance however if we are not commenting 
+then child Thread will always call yeild(); method, so we can expect Main Thread will get executed more no. of times than Child Thread.
+
+
+What is the purpose of yeild(); method ?  :
+-------------------------------------------
+
+The processer which required more processing time in the middle we can define yeild(); method to give the chance to other waiting Threads. 
+
+
+
+
+
+
+
+2. join(); method : 
+-------------------
+
+-If a Thread wants to wait until completing some other Thread then we should go for join(); method.
+
+- Assume Thread "t1" wants to wait until completing "t2" then "t1" has to call call " t2.join(); " method.
+
+- If t1 executes t2.join(); then t1 will immidietly enter into waiting state until t2 completes.
+
+- Once t2 completes then t1 can continue its execution. 
+
+
+
+
+Join method with diffrent argumets : 
+------------------------------------
+
+1. public final void join()
+
+2. public final void (long ms)
+
+3. public final void (long ms, int ns)
+ 
+
+- Every join(); method throghs InterruptedException which is checked exception , hence we have to handle that exception either by using 
+try catch block or by using throws keyword otherwise we will get compile time error.
+
+
+example-1 : 
+---------
+
+Waiting of child thread until completing main Thread : 
+-------------------------------------------------------
+
+
+
+
+
+
+class MyRunnable implements Runnable
+{
+    public static Thread mt;
+
+    public void run()
+    {
+         try
+                {
+                    mt.join();
+                }
+                catch(InterruptedException ie)
+                {
+
+                }
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Child Thread !");
+        }
+    }
+    
+}
+public class DemoJoinMethod2
+{
+    public static void main(String[] args) throws InterruptedException
+    {
+        MyRunnable.mt = Thread.currentThread();
+        MyRunnable obj = new MyRunnable();
+        Thread t = new Thread(obj);
+        t.start();
+        
+
+
+        for(int i = 0; i < 10; i++)
+        {
+            System.out.println("Main Thread !");
+            Thread.sleep(500);
+
+        }
+    }
+}
+
+- If we comment line t.join(); then both main and child Thread will execute simultaniously and we can not expect exact output, it depends on 
+Thread Scheduler and if we dont comment the line t.join(); then main Thread will be waiting until completing the child Thread. In this case
+the output we will get is child Thread 10 times followed by main Thread.
+
+
+
+
+
+
+
+// Waiting of Child thread until completing main thread 
+---------------------------------------------------------
+
+example-2: 
+----------
+
+
+
+
+class MyRunnable implements Runnable
+{
+    public static Thread mt;
+
+    public void run()
+    {
+         try
+                {
+                    mt.join();
+                }
+                catch(InterruptedException ie)
+                {
+
+                }
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Child Thread !");
+        }
+    }
+    
+}
+public class DemoJoinMethod2
+{
+    public static void main(String[] args) throws InterruptedException
+    {
+        MyRunnable.mt = Thread.currentThread();
+        MyRunnable obj = new MyRunnable();
+        Thread t = new Thread(obj);
+        t.start();
+
+
+        for(int i = 0; i < 10; i++)
+        {
+            System.out.println("Main Thread !");
+            Thread.sleep(500);
+
+        }
+    }
+}
+
+- In the above example-2 Child thread calls join(); method on main Thread object hence child thread has to wait until completing main
+thread in this case the output we will get is main thread 10 times followed by child thread.
+
+
+
+
+
+
+
+
+
+DeadLock : 
+----------
+
+
+
+
+case -1 example : 
+-----------------
+- In java, Assume a process or thread named "child Thread" is waiting for completing of "main thread" and main thread waiting for 
+"child thread" in this situation Program gets stucked and waiting of two process or thread for each other this concept is know as 
+DeadLock.
+
+
+
+/* 
+ In this examole both of the Threads call join(); method and waiting for each other .. in this case program will get stucked and 
+we will not get any output. This concept is called as DeadLock
+*/
+
+
+class MyRunnable implements Runnable
+{
+    public static Thread tObject;
+
+    public void run()
+    {
+        try
+        {
+            tObject.join();
+        }
+        catch(InterruptedException ie)
+        {
+
+        }
+
+        for(int i = 0; i < 10; i ++)
+        {
+            System.out.println("Child Thread !");
+        }
+    }
+}
+public class DeadLock
+{
+    public static void main(String[] args) throws InterruptedException
+    {
+        MyRunnable.tObject = Thread.currentThread();
+        MyRunnable obj = new MyRunnable();
+        Thread t = new Thread(obj);
+        t.start();
+        t.join();
+
+        for(int i = 0 ; i < 10; i++)
+        {
+            System.out.println("Main Thread !");
+        }
+    }
+}
+
+
+
+
+
+
+
+Deadlock example-2 :
+---------------------
+
+If a Thread calls join(); method on the same Thread it's self then the program will be stucked for infinity time this situation is called
+as DeadLock. 
+
+
+example:
+--------
+
+
+public class DeadLockDemo2
+{
+    public static void main(String[] args) throws InterruptedException
+    {
+
+    Thread.currentThread().join();  
+      
+    }
+}
+
+
+
+
+
+
+
+
+
+
+sleep(); Method:
+----------------
+
+
+
+
+
+There are two types of sleep(); method : 
+----------------------------------------
+
+1. public static native void sleep(long ms)
+2. public static void sleep(long ms, int ns)
+
+
+- Every sleep(); method throughs InterruptedException, which is checked exception hence whenever we are using sleep(); Method
+compulsory we should handle InterruptedException either by "try catch" or by "throws keyword" otherwise we will get compile time 
+error.
+
+
+// Example of sleep(); method  :
+---------------------------------
+
+
+
+public class MethodSleepDemo
+{
+    public static void main(String[] args)
+    {
+        for(int i = 1; i <= 10; i ++)
+        {
+            System.out.println("Slide- " + i);
+
+            try
+             {
+            Thread.sleep(1000);
+             }
+            catch(InterruptedException ie)
+             {
+            
+             }
+        }
+        
+    }
+}
+
+
+public void interrupt(); method : 
+---------------------------------
+
+
+- A Thread can interrupt a sleeping Thread or waiting Thread by using interrupt(); method of Thread class 
+
+
+
+This is How a Thread can interrupt another Thread : 
+---------------------------------------------------
+
+
+class MyRunnable implements Runnable
+{
+    public void run() 
+    {
+        try
+            {
+        for(int i = 0 ; i < 10; i ++)
+        {
+            System.out.println("I am Executing !");
+            
+            Thread.sleep(1000);
+            
+            
+        }
+            }
+            catch(InterruptedException ie)
+            {
+                System.out.println("I got interrupted !");
+            }
+    }
+}
+
+public class InterruptingThread
+{
+    public static void main(String[] args)
+    {
+        MyRunnable obj = new MyRunnable();
+        Thread t = new Thread(obj);
+        t.start();
+        t.interrupt();
+
+
+      
+        System.out.println("End of Main Thread !");
+        
+
+    }
+}
+
+
+- If we comment line Thread.interrupt(); , then main thread wont interrupt child thread. In this case child thread will execute
+for loop 10 times.
+
+-If we are not commenting Thread.interrupt(); then main thread interrupts child thread in this case the output is :
+
+
+output:
+-------
+End of Main Thread !
+I am Executing !
+I got interrupted !
+
+
+
+- whenever we are calling interrupt(); method if target thread not in sleeping or waiting state then there is no impact of 
+interrupt call immidietly. interrupt call will be waited until target thread enter into sleeping or waiting state.
+
+- If the target thread Thread enter into sleep or waiting thread then immidietly interrupt call will interrupt the target thread.
+
+- If the target thread never enter into sleeping or waiting state then there is no impact of interrupt call and this is the only 
+case where interrupt call will be wasted .
+
+
+
+
+
+
+
+Diffrence between yeild();, join();, and sleep(); method : 
+-----------------------------------------------------------
+
+yield();
+--------
+
+purpose : 
+---------
+- If a thread wants to pause its execution to give the chance to other threads with same priority then we should go for yeild(); method.
+
+- is yeild(); method overloaded method or not ?    _ yeild(); is not overloaded method 
+
+- is it final method                               - NO
+
+- is it throghs InterruptedException ?             - YES
+
+- is it native or not  ?                           - YES
+
+
+
+join();
+-------
+
+purpose:
+--------
+- If a thread want to wait until completing of some other threads then we should go for join(); method .
+
+- is join(); method overloaded method or not ?   _ join(); is overloaded method 
+
+- is it final method                             _ YES
+
+- is it throghs InterruptedException ?           - YES
+
+- is it native or not  ?                         - NO
+
+
+sleep();
+--------
+
+purpose:
+--------
+- If a thread doesn't want to perfome any activities or operations then we should go for sleep method .
+
+- is sleep(); method overloaded method or not ?   _ sleep(); is overloaded method 
+
+- is it final method                             _ NO
+
+- is it throghs InterruptedException ?           - YES
+
+- is it native or not  ?                         - sleep(long ms) is native method and sleep(long ms, int ns) is not native
+
+
+
+
+

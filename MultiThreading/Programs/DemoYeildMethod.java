@@ -17,6 +17,7 @@ public class DemoYeildMethod
         MyRunnable obj = new MyRunnable();
         Thread t = new Thread(obj);
         t.start();
+        
 
 
         for(int i = 0 ; i < 10; i ++)
