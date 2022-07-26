@@ -1397,3 +1397,196 @@ Diffrence between DeadLock and Starvetion :
 
 - long waiting of a thread where waiting ends at certain points. ex - low priority thread has to wait until completing all high priority
 thread . It may be long waiting but ends at certain point which is nothing but Starvetion.
+
+
+
+
+
+
+
+Daemon Thread : 
+---------------
+
+- The thread which are executing in the background are called Daemon threads.
+
+example : Garbage collector, Signal Dispatcher, Attach listener etc..
+
+
+- The main purpose of daemon thread is to provide support for non-daemon threads(Main Thread) for ex- If main thread runs with low memory 
+then JVM runs Garbage collector to destroy unnecessary objects so that no of bits of free memory will be improved, with this free memory
+main thread can continue its execution.
+
+- Usually Daemon thread having low priority but based on our requirment daemon thread can run with high priority also
+
+- We can check daemon nature of a thread by using isDaemon() method of thread class.
+
+            - public boolean isDaemon()
+
+
+- We can chnge daemon nature of a thread by using setDaemon() method. 
+
+            - public void setDaemon(boolean b)
+
+
+- But changing daemon nature is possible before starting of a thread only. After starting a thread if we are trying to chnage th e daemon 
+nature then we will get run time excepting saying : IllegalThreadStateException.
+
+
+- By default main Thread is always is non-daemon and for all remaining threads daemon nature will be inherited from parent to child
+that is if the parent thread is daemon then autometically child thread is also daemon and if the parent thread is non-daemon then autometically
+child thread is also non-daemon.
+
+
+note : 
+------
+
+- It is impossible to chnage daemon nature of main thread because it is already started by JVM at beginning
+
+
+
+
+
+class MyThread extends Thread
+{
+
+}
+
+
+public class DaemonThread 
+{
+    public static void main(String[] args)
+    {
+
+        //System.out.println(Thread.currentThread().isDaemon()); //method to check if the thread is Daemon or not 
+
+       // Thread.currentThread().setDaemon(true); // Method to set a Thread as daemon thread h
+
+        
+
+       MyThread t = new MyThread();
+        t.setDaemon(true);
+        System.out.println(t.isDaemon());
+        t.start();
+    }
+}
+
+
+- Whenever last daemon thread terminates autometically all daemon thread will be terminated irrespective of their position.
+
+
+
+
+
+
+
+
+class MyThread extends Thread
+{
+    public void run()
+    {
+        for(int i = 0; i < 10; i ++)
+        {
+            System.out.println("Child Thread !");
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ie)
+            {
+
+            }
+        }
+    }
+}
+public class DaemonThreadDemo
+{
+    public static void main(String[] args)
+    {
+        MyThread t = new MyThread();
+        t.setDaemon(true);
+        t.start();
+
+        System.out.println("End of main Thread !");
+    }
+}
+
+- If we comment t.setDaemon() line then both thread will be executed until their completion and if we do not comment then
+as soon as non daemon thread(main thread) terminates immidietly all daemon thread will be terminated.
+
+
+
+
+
+Green Thread :
+ --------------
+
+ - Java multithreading concept is implemented by using the following two models : 
+
+            1. Green Thread Model 
+            2. Native os Model 
+
+
+Green Thread Model : 
+---------------------
+- The thread which is managed completly by the JVM without taking underlying OS support is called Green Thread. 
+
+- Very few OS like SUN SOLARIS provides support for Green Thread model 
+
+- Anyway Green Thread model is deprecated and not recommended to use.
+
+
+Native OS model : 
+----------------
+
+- The thread which is managed by the JVM with the help of underlying OS, is called Native OS model.
+
+- Al Windows based OS provides support for Native OS model.
+
+
+
+How to stop a Thread ? 
+-----------------------
+- We can stop the thread execution by using stop() method of thread class.
+
+
+                - pubic void stop()
+    
+- If we call stop() method then immidietly thread will enter into dead state. 
+
+- Anyway stop() method is deprecated and not recommended to use.
+
+
+
+How to suspend and resume a thread ? 
+--------------------------------------
+
+- We can suspend a thread by using suspend method of a thread class then immidietly the thread will enter into suspended state.
+
+- We can resume a suspended thread by using resume() method of thread class, then suspended thread can continue its execution.
+
+
+            - public void resume()
+
+
+- Anyway these methods are deprecated and not recommended to use.
+
+
+
+
+
+
+
+
+Thread Group : 
+---------------
+
+- Based on functionality we can group threads into a single unit which is nothing but Thread Group. That means thread group contains
+a group of threads.
+
+- In addition to threads thread can also conatin sub thread groups.
+
+
+Advantage : 
+-----------
+
+- The main advantages of maintaning threads in the form of thread group is we can perform common operation very easily.

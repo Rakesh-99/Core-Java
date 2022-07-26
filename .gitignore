@@ -1,4 +1,7 @@
 *.class
 .vscode/
 tempCodeRunnerFile.java
+.idea
+out
+CollectionFrameWork.iml
 

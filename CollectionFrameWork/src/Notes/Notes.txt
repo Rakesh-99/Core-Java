@@ -1,0 +1,379 @@
+                    Collection FrameWork
+                    --------------------
+
+Need of Collection FrameWork :
+------------------------------
+-  An array is an indexed collections of fixed number of homogeneous data elements.
+- The main advantages of array is we can represent multiple values with a single variable, So that reusebility of the code will be improved.
+
+
+Limitations of Object type Arrays :
+-----------------------------------
+- Array is fixed in size i.e once we created an array with some size there is no chance of increasing or decreasing its size based on our requirements.
+  Hence, to use array compulsory we should know the size in advance which may not possible always.
+
+
+  Array can hold homogenous data elements :
+  ------------------------------------------
+  ex:
+  ----
+  Student[] s = new Student[10];
+  s[0] = new Student; -----> correct
+  s[1] = new Customer; -----> Wrong
+
+  However, we can re can resolve this issue by using Object array
+  ex:
+  ---
+  Object[] ob = new Object[10];
+  ob[0] = new Student();
+  ob[1] = new Customer();
+
+  note :
+  ------
+  Array concept is not implemented based on some standard data structure hence, ready-made method support is not available for array requirement
+  to write code explicitly which is complexity of the programming.
+
+
+
+  Difference between Array and Collection :
+  -----------------------------------------
+  Array :
+  ------
+  - Array in fixed in size.
+  - Array can only contain homogeneous data elements.
+  - There is no underlying DS support.
+  - With respect to memory array is not recommended.
+  - With respect to performance Array is recommended.
+  - By using array we can hold both primitive and Object.
+
+
+  Collection :
+  ------------
+  - Collection is growable in nature.
+  - Collection can hold both homogeneous and heterogeneous objects.
+  - Every Collection class is implemented based on some standard data structure & ready-made support we can expect.
+  - With respect to memory Collection is recommended.
+  - With respect to performance collection is not recommended.
+  - By using Collection we can only hold Object.
+
+
+
+  9 key Interface of Collection Framework:
+  ----------------------------------------
+  [1] Collection(I):
+  --------------
+  - If we want to represent a group of individual object as a single entity then we should go for Collection.
+  - Collection interface defines the most methods which are applicable for any Collection object.
+  - In general Collection interface is considered as root interface of Collection framework.
+
+  Note :
+  ------
+  - There is no concrete class which implements Collection Interface directly.
+
+
+ Difference between Collection and Collections :
+ ------------------------------------------------
+
+
+ Collection :
+ ------------
+ - A Collection is an Interface which represents a group of individual objects as a single entity.
+
+ Collections :
+ -------------
+ - Collections is a utility class present in "java.util.package" to define several utility methods (like searching,sorting etc..) for
+   Collection objects.
+
+
+
+[2] List(I) :
+---------------
+- List is the child interface of Collection.
+- If we want to represent a group of individual object as a single entity where duplicate values are not allowed and insertion order
+  preserved then we should go for List interface.
+
+
+
+                                           Collection(I)
+                                           -------------
+                                                |
+                                                |
+                                                |
+                                              List(I)
+                                  -------------------------------------
+                                  |              |                    |
+                                  |              |                    |
+                                  |              |                    |
+                                  |              |                    |
+                                  |              |                    |
+                                  |              |                    |
+                            ArrayList(1.2v)   LinkedList(1.2V)   Vector(1.0v)
+                                                                 -------------
+                                                                       |
+                                                                       |
+                                                                   stack(1.0v)
+
+
+
+
+Note :
+-------
+- Vector and Stack classes are reengineered in 1.2v to implement List interface.
+
+
+
+
+
+[3] Set(I) :
+-------------
+- Set is the child interface of Collection interface .
+- If we want to represent a group of individual object as a single entity where duplicate values are not allowed and insertion order is not
+  preserved then we should go for Set interface.
+
+
+
+
+                                         Collection(I) (1.2v)
+                                         --------------------
+                                                  |
+                                                  |
+                                                  |
+                                                  |
+                                            Set(I) (1.2v)
+                                            -------------
+                                                  |
+                                                  |
+                                                  |
+                                            HashSet(1.2v)
+                                            -------------
+                                                  |
+                                                  |
+                                                  |
+                                          LinkedHashSet(1.4v)
+
+
+
+
+
+
+[4] SortedSet(I) :
+-------------------
+- SortedSet is the child interface of Set interface.
+- When we want to represent a group of individual object as a single entity where duplicate values are not allowed but all object should be in
+  Sorted order then we should we go for SortedSet interface.
+
+
+
+                                          Collection(I) (1.2v)
+                                          --------------------
+                                                  |
+                                                  |
+                                                  |
+                                                  |
+                                             Set (1.2v)
+                                             -----------
+                                                  |
+                                                  |
+                                                  |
+                                                  |
+                                            SortedSet (1.2v)
+                                            ----------------
+
+
+
+
+
+
+
+ [5] NavigableSet(I) :
+ ---------------------
+
+ - It is the child interface of SortedSet interface, it defines several method for navigation purpose.
+
+
+
+
+
+                                                    Collection(I) (1.2v)
+                                                    --------------------
+                                                             |
+                                                             |
+                                                             |
+                                                             |
+                                                        Set(I) (1.2v)
+                                                        -------------
+                                                             |
+                                                             |
+                                                             |
+                                                      SortedSet(I) (1.2v)
+                                                      --------------------
+                                                             |
+                                                             |
+                                                             |
+                                                     NavigableSet(I) (1.2v)
+                                                     ----------------------
+                                                             |
+                                                             |
+                                                             |
+                                                        TreeSet (1.2v)
+                                                        --------------
+
+
+
+
+
+
+
+[6] Queue(I) :
+---------------
+- It is the child interface of Collection interface.
+- If we want to represent a group of individual objects prior to processing then we should go for Queue.
+
+ex :
+----
+- Before sending a mail all mail id's we have to store somewhere and in which order we saved in the same order mail should be delivered
+  (First in First out) for this type of requirement Queue concept is best.
+
+
+
+                                                Collection(1.2v)
+                                                ----------------
+                                                       |
+                                                       |
+                                                       |
+                                                       |
+                                                   Queue(1.5v)
+                                             ---------------------------
+                                             |                         |
+                                             |                         |
+                                             |                         |
+                                             |                         |
+                                     PriorityQueue(1.5)         BlockingQueue(1.5v)
+                                     -------------------       ---------------------
+                                                                        |
+                                                                        |-- LinkedBlockingQueue(1.5v)
+                                                                        |
+                                                                        |-- PriorityBlockingQueue(1.5)
+
+
+
+Note :
+------
+- All the above interfaces ( Collection, List, Set, SortedSet, NavigableSet, & Queue) meant for representing a group of individual object.
+- If we want to represent a group of objects as key value pair then we should go for Map interface.
+
+
+
+
+[7] Map(I) :
+-------------
+- Map is not the child of Collection interface.
+- If we want to represent a group of individual objects as key value pair then we should go for Map interface.
+
+ex :
+----
+
+                RollNo                  Name
+                ------                 ------
+                101                    John
+                102                    Larry
+                103                    Stephn
+                104                    Amanda
+
+Note :
+------
+- Both key values are object, duplicate keys are not allowed but values can be duplicated.
+
+
+
+
+
+                                              Map(I) (1.2v)                                       Dictionary(1.0v)
+                       ---------------------------------------------------------------------------      |
+                       |                        |                          |                     |      |
+                       |                        |                          |                     |      |
+                       |                        |                          |                     |      |
+                       |                        |                          |                     |      |
+                       |                        |                          |                     |      |
+                  HashMap(1.2v)           WeakHashMap(1.2v)       IdentityHashMap(1.4v)     Hashtable(1.0)
+                 ---------------          -----------------       ---------------------     --------------
+                       |                                                                         |
+                       |                                                                         |
+                       |                                                                         |
+                 LinkedHashMap(1.4v)                                                        Properties(1.0v)
+                ---------------------                                                      ------------------
+
+
+
+
+
+[8] SortedMap(I) :
+------------------
+- It is the child interface of Map interface.
+- If we want to represent a group of key value pair according to some sorting order of key then we should go for SortedMap.
+
+
+
+                                                Map(I) (1.2v)
+                                               ----------------
+                                                      |
+                                                      |
+                                                      |
+                                                      |
+                                               SortedMap(I) (1.2v)
+                                               --------------------
+
+
+
+
+
+[9] NavigableMap(I) :
+----------------------
+- NavigableMap is the child interface of SortedMap. It defines several utility methods for navigating purpose.
+
+
+
+
+                                    Map(I) (1.2v)
+                                   ---------------
+                                          |
+                                          |
+                                          |
+                                  SortedMap(I) (1.2v)
+                                  --------------------
+                                          |
+                                          |
+                                          |
+                                 NavigableMap(I) (1.6v)
+                                 -----------------------
+                                          |
+                                          |
+                                          |
+                                      TreeMap (1.2v)
+                                    ------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
