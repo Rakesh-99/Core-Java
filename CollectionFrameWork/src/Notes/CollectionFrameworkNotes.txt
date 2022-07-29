@@ -354,17 +354,42 @@ Note :
 
 
 
+Collection Interface :
+----------------------
+- If we want to represent a group of individual object as a single entity then we should go for Collection interface.
+- In general Collection interface is considered as the root interface of Collection framework.
+- Collection interface defines the most common methods which are applicable for any Collection Object.
+
+Important method of Collection objects :
+----------------------------------------
+- boolean add (Object o)
+- boolean addAll ( Collection c)
+- boolean remove ( object c )
+- boolean removeAll ( Collection c )
+- boolean retainAll ( Collection c )
+- void clear ()
+- boolean contains (Object o)
+- boolean containsAll ( Collection c )
+- boolean isEmpty ()
+- int size()
+- Object toArray()
+-iterator iterator()
 
 
+Note :
+-------
+- Collection interface doesn't contain any method to retrieve object, there is no concrete class which implements Collections class directly.
 
 
+Difference between Collection and Collection framework :
+-------------------------------------------------------
+Collection :
+------------
+- If we want to represent a group of individual object as a single object then we should go for Collection interface.
 
-
-
-
-
-
-
+Collection Framework :
+--------------
+- It defines several classes and interfaces which can be used a group of object as a single entity.
 
 
 
