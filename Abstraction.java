@@ -2,46 +2,46 @@
 
 /*
 
-Abstraction is a process of hiding unnecessary details(Implementation)from the users to focous on essential details(functionalities).It increses the efficiency and thus reduces complexity.
+Abstraction is a process of hiding unnecessary details(Implementation)from the users to focus on essential details(functionalities).It increases the efficiency and thus reduces complexity.
 
 */
 
-// An abstarct class can have normal method however a non-abstarct class can not have an abstarct method 
+// An abstract class can have normal method however a non-abstarct class can not have an abstarct method 
 
 
 /*
 
-When you extend an abstarct class ,you have to define it's all method body in class which extends abstarct class otherwise it will through an compile time error.
+When you extend an abstarct class ,you have to define it's all method body in class which extends abstract class otherwise it will through an compile time error.
 
 */
 
-// You can not create the object of Abstarct class however you can create the reference.
+// You can not create the object of Abstract class however you can create the reference.
 
 
 
-abstract class Univercities {
+abstract class Universities {
 
-    int total_no_of_univercities;
+    int total_no_of_universities;
 
     abstract void disp();
 }
 
-class Bhubaneswar extends Univercities
+class Bhubaneswar extends Universities
 {
     int total_no_of_univercities = 39;
 
     public void disp()
     {
-        System.out.println(total_no_of_univercities);
+        System.out.println(total_no_of_universities);
     }
 }
 class Kolkata extends Univercities
 {
-    int total_no_of_univercities = 32;
+    int total_no_of_universities = 32;
 
     public void disp()
     {
-        System.out.println(total_no_of_univercities);
+        System.out.println(total_no_of_universities);
     }
 }
 
